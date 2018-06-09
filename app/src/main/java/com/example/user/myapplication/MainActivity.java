@@ -1,12 +1,17 @@
 package com.example.user.myapplication;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
+import com.example.user.myapplication.topsongs.TopSongsActivity;
+
 public class MainActivity extends AppCompatActivity {
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,9 +22,9 @@ public class MainActivity extends AppCompatActivity {
         bTopSongs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(MainActivity.this,
-                        "TODO",
-                        Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,
+                        TopSongsActivity.class);
+                startActivity(intent);
             }
         });
     }
