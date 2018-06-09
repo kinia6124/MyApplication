@@ -31,6 +31,14 @@ public class TopSongsAdapter extends RecyclerView.Adapter<TopSongsAdapter.TopSon
     @Override
     public void onBindViewHolder(TopSongsViewHolder holder, int position) {
 
+        TrendingSingle single = singles.get(position);
+
+        holder.tvPlace.setText(String.valueOf(single.intChartPlace));
+        holder.tvTrack.setText(single.strTrack);
+        holder.tvArtist.setText(single.strArtist);
+        holder.tvAlbum.setText(single.strAlbum);
+
+
     }
 
     @Override
