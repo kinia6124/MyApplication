@@ -3,10 +3,12 @@ package com.example.user.myapplication.topsongs;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.user.myapplication.R;
 import com.example.user.myapplication.api.ApiService;
+import com.example.user.myapplication.api.Track;
 import com.example.user.myapplication.api.Tracks;
 
 import retrofit2.Call;
@@ -41,10 +43,10 @@ public class SongDetailsActivity extends AppCompatActivity {
             @Override
             public void onResponse(@NonNull Call<Tracks> call, @NonNull Response<Tracks>
                     response) {
-                Toast.makeText(
-                        SongDetailsActivity.this,
-                        "Pobrano dane", Toast.LENGTH_SHORT
-                ).show();
+                Tracks tracks = response.body();
+                if (tracks != null && tracks. track .size() > 0 ) {
+                    showData(tracks. track .get( 0 ));
+                }
             }
 
             @Override
@@ -58,6 +60,16 @@ public class SongDetailsActivity extends AppCompatActivity {
         });
     }
 
+    private void showData(Track track) {
+        TextView tvAlbum = findViewById(R.id. tvAlbum );
+        TextView tvGenre = findViewById(R.id. tvGenre );
+        TextView tvStyle = findViewById(R.id. tvStyle );
+        TextView tvDescription = findViewById(R.id. tvDescription );
+        tvAlbum.setText(track. strAlbum );
+        tvGenre.setText(track. strGenre );
+        tvStyle.setText(track. strStyle );
+        tvDescription.setText(track. strDescriptionEN );
+    }
     @Override
     public boolean onSupportNavigateUp() {
 
